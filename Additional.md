@@ -9,3 +9,22 @@ https://akizukidenshi.com/catalog/g/gI-00239/
 
 震度のリアルタイム演算に用いられる近似フィルタの改良  
 https://www.jstage.jst.go.jp/article/zisin/65/3/65_223/_article/-char/ja  
+
+計測震度の算出方法  
+https://www.data.jma.go.jp/svd/eqev/data/kyoshin/kaisetsu/calc_sindo.htm  
+
+出典：気象庁ホームページ　（https://www.data.jma.go.jp/svd/eqev/data/kyoshin/kaisetsu/calc_sindo.htm）  
+「表１　気象庁震度階級表」（気象庁ホームページより）  
+表１　気象庁震度階級表
+| 震度階級 | 計測震度 |
+| ---- | ---- |
+| ０ | 0.5未満 |
+| １ | 0.5以上1.5未満 |
+| ２| 1.5以上2.5未満 |
+| ３ | 2.5以上3.5未満 |
+| ４ | 3.5以上4.5未満 |
+| ５弱 | 4.5以上5.0未満 |
+| ５強 | 5.0以上5.5未満 |
+| ６弱 | 5.5以上6.0未満 |
+| ６強 | 6.0以上6.5未満 |
+| ７ | 6.5以上 |
