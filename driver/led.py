@@ -1,4 +1,5 @@
-from machine import Pin
+# from machine import Pin
+import RPi.GPIO as Pin
 import time
 
 
@@ -8,16 +9,16 @@ class Led ():
     """
     def __init__(self):
         self.__led = [
-            Pin(6, Pin.OUT),
-            Pin(7, Pin.OUT),
-            Pin(8, Pin.OUT),
-            Pin(9, Pin.OUT),
-            Pin(10, Pin.OUT),
-            Pin(11, Pin.OUT),
-            Pin(12, Pin.OUT),
-            Pin(13, Pin.OUT),
-            Pin(14, Pin.OUT),
-            Pin(15, Pin.OUT)
+            Pin.setup(6, Pin.OUT),
+            Pin.setup(7, Pin.OUT),
+            Pin.setup(8, Pin.OUT),
+            Pin.setup(9, Pin.OUT),
+            Pin.setup(10, Pin.OUT),
+            Pin.setup(11, Pin.OUT),
+            Pin.setup(12, Pin.OUT),
+            Pin.setup(13, Pin.OUT),
+            Pin.setup(14, Pin.OUT),
+            Pin.setup(15, Pin.OUT)
         ]
 
     def wakeup(self):
@@ -32,40 +33,40 @@ class Led ():
         """
         Display the LED corresponding to the seismic intensity class.
         """
-        for i in range(0, 10):
-            if i <= scale or i == maximum:
-                self.on(i)
-            else:
-                self.off(i)
+        # for i in range(0, 10):
+        #     if i <= scale or i == maximum:
+        #         self.on(i)
+        #     else:
+        #         self.off(i)
 
     def on(self, pin: int):
         """
         Turn on the LED corresponding to the specified seismic intensity class.
         """
-        self.__led[pin].on()
+        # self.__led[pin].on()
 
     def off(self, pin: int):
         """
         Turn off the LED corresponding to the specified seismic intensity class.
         """
-        self.__led[pin].off()
+        # self.__led[pin].off()
 
     def toggle(self, pin: int):
         """
         Toggle the LED corresponding to the specified seismic intensity class.
         """
-        self.__led[pin].toggle()
+        # self.__led[pin].toggle()
 
     def clear(self):
         """
         Turn off All LEDs.
         """
-        for i in range(0, 10):
-            self.off(i)
+        # for i in range(0, 10):
+            # self.off(i)
 
     def on_all(self):
         """
         Turn on All LEDs.
         """
-        for i in range(0, 10):
-            self.on(i)
+        # for i in range(0, 10):
+            # self.on(i)

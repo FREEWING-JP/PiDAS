@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from driver import led, MCP3204
-from machine import SPI, Pin
-import utime
+# from machine import SPI, Pin
+import RPi.GPIO as Pin
+import time as utime
 import math
 import tool.filter
 
@@ -10,13 +11,14 @@ import tool.filter
 # ==========================================================
 # SPI
 BAUDRATE = 115200
-SPI_PIN_SCK = Pin(18)
-SPI_PIN_MOSI = Pin(19)
-SPI_PIN_MISO = Pin(20)
-SPI_PIN_CS = Pin(21, Pin.OUT)
+# SPI_PIN_SCK = Pin.setup(18)
+# SPI_PIN_MOSI = Pin.setup(19)
+# SPI_PIN_MISO = Pin.setup(20)
+Pin.setmode(Pin.BCM)
+SPI_PIN_CS = Pin.setup(21, Pin.OUT)
 
 # Zero point adjust button pin
-ADJUST_START_PIN = Pin(16, Pin.IN, Pin.PULL_DOWN)
+ADJUST_START_PIN = Pin.setup(16, Pin.IN, pull_up_down=Pin.PUD_DOWN)
 
 # Sampling frequency
 SAMPLING_HZ = 100
@@ -29,8 +31,8 @@ DATA_SIZE = SAMPLING_HZ
 
 # A/D converter setting
 ADC = MCP3204.MCP3204(
-    SPI(0, baudrate=BAUDRATE, polarity=0, phase=0,
-        sck=SPI_PIN_SCK, mosi=SPI_PIN_MOSI, miso=SPI_PIN_MISO),
+    # SPI(0, baudrate=BAUDRATE, polarity=0, phase=0,
+    #     sck=SPI_PIN_SCK, mosi=SPI_PIN_MOSI, miso=SPI_PIN_MISO),
     SPI_PIN_CS)
 
 # LED setting
@@ -195,7 +197,7 @@ while True:
     elif 0 < offset_counter:
         offset_counter -= 1
 
-    if ADJUST_START_PIN.value() == Pin.PULL_UP and is_offsetted:
+    if 0 == 1 and is_offsetted:
         # When the zero point adjust button is pressed, the correction is started.
         is_offsetted = False
         offset_counter = SAMPLING_HZ * 5
