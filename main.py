@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from driver import led, MCP3204
+from driver import led, MCP3204, mpu6050
 # from machine import SPI, Pin
 import RPi.GPIO as Pin
 import time as utime
@@ -34,6 +34,8 @@ ADC = MCP3204.MCP3204(
     # SPI(0, baudrate=BAUDRATE, polarity=0, phase=0,
     #     sck=SPI_PIN_SCK, mosi=SPI_PIN_MOSI, miso=SPI_PIN_MISO),
     SPI_PIN_CS)
+
+ACC = mpu6050.mpu6050(0x68)
 
 # LED setting
 LED = led.Led()
@@ -103,7 +105,15 @@ def get_seismic_intensity_class(scale: float):
 
 def read_acceleration(axis: int):
     # Read 3-axis data from acceleration sensor
-    a = ADC.read(axis)
+    # a = ADC.read(axis)
+    accel_data = ACC.get_accel_data()
+    if axis == 0:
+      a = accel_data['x']
+    if axis == 1:
+      a = accel_data['y']
+    if axis == 2:
+      a = accel_data['z']
+
     index = frame % len(row_data[axis])
 
     # Remove outliers
@@ -124,7 +134,8 @@ def set_filtered_data(axis: int):
     for i in range(len(offsetted_dataset)):
         index = (frame - len(offsetted_dataset) + i + 1) % len(row_data[axis])
         # G to Gal.
-        offsetted_dataset[i] = offsetted_data[axis][index] / 1024 * 980
+        # offsetted_dataset[i] = offsetted_data[axis][index] / 1024 * 980
+        offsetted_dataset[i] = offsetted_data[axis][index] * 100
     index = frame % len(row_data[axis])
     filtered_data[axis][index] = FILTER.exec(offsetted_dataset).pop()
 
