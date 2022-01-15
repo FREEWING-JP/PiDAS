@@ -33,6 +33,37 @@ $ i2cdetect -y 1
 60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
 ```
+```
+pi@raspberrypi:~ $ cd PiDAS/
+pi@raspberrypi:~/PiDAS $ python3 main.py
+START
+Gal: 0.0
+Gal: 117.67322626350727
+SIC: 5.08 ( 6 )
+Gal: 0.0
+Gal: 0.0
+Gal: 0.0
+Gal: 0.0
+offset complete!!
+Gal: 0.0
+Gal: 0.0
+Gal: 0.0
+Gal: 0.0
+Gal: 2.2084558413024364
+SIC: 1.63 ( 2 )
+Gal: 8.17165624281887
+SIC: 2.76 ( 3 )
+Gal: 37.252011153579
+SIC: 4.08 ( 4 )
+Gal: 159.87605720011197
+SIC: 5.35 ( 6 )
+Gal: 177.7918478913437
+SIC: 5.44 ( 6 )
+Gal: 128.48526056987734
+SIC: 5.16 ( 6 )
+Gal: 90.78479066655287
+SIC: 4.86 ( 5 )
+```
 
 # PiDAS (Pinpoint Detection and Alarm System)
 PiDASのソースコードです。
