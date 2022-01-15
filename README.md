@@ -1,8 +1,11 @@
 # FREE WING なんちゃって改造版
-ラズパイで動く様にしたつもり  
+ラズパイで動く様にした  
 使用センサ：I2C MPU-6050  
 https://github.com/m-rtijn/mpu6050 MIT License使用  
 
+#### 関連記事
+Raspberry Piと加速度センサーを使って地震計を作る、PiDAS for Raspberry Pi、I2Cの MPU-6050使用  
+http://www.neko.ne.jp/~freewing/raspberry_pi/raspberry_pi_i2c_mpu6050_pidas_seismic_meter/  
 ```
 sudo raspi-config nonint do_i2c 0
 
