@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from driver import led, MCP3204, mpu6050
-# from machine import SPI, Pin
+from driver import led, mpu6050
 import RPi.GPIO as Pin
 import time as utime
 import math
@@ -9,15 +8,10 @@ import tool.filter
 # ==========================================================
 # Constants setting
 # ==========================================================
-# SPI
-BAUDRATE = 115200
-# SPI_PIN_SCK = Pin.setup(18)
-# SPI_PIN_MOSI = Pin.setup(19)
-# SPI_PIN_MISO = Pin.setup(20)
+# GPIO mode(Dummy)
 Pin.setmode(Pin.BCM)
-SPI_PIN_CS = Pin.setup(21, Pin.OUT)
 
-# Zero point adjust button pin
+# Zero point adjust button pin(Dummy)
 ADJUST_START_PIN = Pin.setup(16, Pin.IN, pull_up_down=Pin.PUD_DOWN)
 
 # Sampling frequency
@@ -29,15 +23,10 @@ RETENTION_SECONDS = 60 * 10
 # Saved data size
 DATA_SIZE = SAMPLING_HZ
 
-# A/D converter setting
-ADC = MCP3204.MCP3204(
-    # SPI(0, baudrate=BAUDRATE, polarity=0, phase=0,
-    #     sck=SPI_PIN_SCK, mosi=SPI_PIN_MOSI, miso=SPI_PIN_MISO),
-    SPI_PIN_CS)
-
+# InvenSense MPU-6050 Six-Axis (Gyro + Accelerometer) I2C
 ACC = mpu6050.mpu6050(0x68)
 
-# LED setting
+# LED setting(Dummy)
 LED = led.Led()
 
 # Frequency filter
@@ -105,7 +94,6 @@ def get_seismic_intensity_class(scale: float):
 
 def read_acceleration(axis: int):
     # Read 3-axis data from acceleration sensor
-    # a = ADC.read(axis)
     accel_data = ACC.get_accel_data()
     if axis == 0:
       a = accel_data['x']
