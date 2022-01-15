@@ -9,16 +9,16 @@ class Led ():
     """
     def __init__(self):
         self.__led = [
-            Pin.setup(6, Pin.OUT),
-            Pin.setup(7, Pin.OUT),
-            Pin.setup(8, Pin.OUT),
-            Pin.setup(9, Pin.OUT),
-            Pin.setup(10, Pin.OUT),
-            Pin.setup(11, Pin.OUT),
-            Pin.setup(12, Pin.OUT),
-            Pin.setup(13, Pin.OUT),
-            Pin.setup(14, Pin.OUT),
-            Pin.setup(15, Pin.OUT)
+            # Pin.setup(6, Pin.OUT),
+            # Pin.setup(7, Pin.OUT),
+            # Pin.setup(8, Pin.OUT),
+            # Pin.setup(9, Pin.OUT),
+            # Pin.setup(10, Pin.OUT),
+            # Pin.setup(11, Pin.OUT),
+            # Pin.setup(12, Pin.OUT),
+            # Pin.setup(13, Pin.OUT),
+            # Pin.setup(14, Pin.OUT),
+            # Pin.setup(15, Pin.OUT)
         ]
 
     def wakeup(self):
